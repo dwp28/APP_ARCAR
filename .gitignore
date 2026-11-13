@@ -1,1 +1,43 @@
+# Dependencias y datos locales de Expo
+node_modules/
+.expo/
+
+# Salidas de compilación y cobertura
+dist/
+web-build/
+coverage/
+*.tsbuildinfo
+
+# Proyectos nativos generados por Expo
+/android/
+/ios/
+
+# Archivos generados
+expo-env.d.ts
+
+# Variables locales
+.env
+.env.*
+!.env.example
+
+# Certificados y claves
+*.jks
+*.keystore
+*.p8
+*.p12
+*.mobileprovision
+*.pem
+*.key
+
+# Registros de herramientas
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Configuración personal de herramientas y sistema
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
 
