@@ -4,6 +4,8 @@ node_modules/
 
 # Salidas de compilación y cobertura
 dist/
+dist-android/
+dist-ios/
 web-build/
 coverage/
 *.tsbuildinfo
