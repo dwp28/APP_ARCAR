@@ -3,7 +3,7 @@ name: Comprobar App Arcar
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [main, 'feat/**']
 
 permissions:
   contents: read

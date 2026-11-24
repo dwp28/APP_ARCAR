@@ -51,6 +51,7 @@ Solo se persisten favoritos en esta fase. La selección, ocupación y progreso d
 
 ## Comprobaciones realizadas
 
+- Instalación limpia con `npm ci` en otra carpeta, sin reutilizar node_modules.
 - TypeScript estricto y ESLint.
 - Diez pruebas automáticas: filtros, búsqueda y recuperación, disponibilidad, selección, confirmación, restablecimiento y formato de favoritos.
 - Exportación web y paquete Android generados con Metro.
