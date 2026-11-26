@@ -3,10 +3,10 @@ import { getResults, initialState, parkingReducer } from '../model';
 
 describe('recorridos del catálogo de demostración', () => {
   test('consulta y filtra las mismas plazas para mapa y lista', () => {
-    expect(getResults(initialState)).toHaveLength(3);
+    expect(getResults(initialState)).toHaveLength(12);
     const filtered = parkingReducer(initialState, { type: 'filters', filters: { kind: 'parking', availableOnly: true } });
-    expect(getResults(filtered).map(p => p.id)).toEqual(['parking-callao']);
-    expect(getResults(parkingReducer(initialState, { type: 'search', destination: 'Gran Vía' }))).toHaveLength(3);
+    expect(getResults(filtered).map(p => p.id)).toEqual(['parking-callao', 'parking-carmen', 'parking-luna', 'parking-tudescos']);
+    expect(getResults(parkingReducer(initialState, { type: 'search', destination: 'Gran Vía' }))).toHaveLength(12);
     expect(getResults(parkingReducer(initialState, { type: 'search', destination: 'Barcelona' }))).toHaveLength(0);
   });
   test('reintentar conserva el destino', () => {
@@ -15,7 +15,7 @@ describe('recorridos del catálogo de demostración', () => {
     expect(getResults(error)).toEqual([]);
     const recovered = parkingReducer(error, { type: 'scenario', scenario: 'normal' });
     expect(recovered.destination).toBe('Callao, Madrid');
-    expect(getResults(recovered)).toHaveLength(3);
+    expect(getResults(recovered)).toHaveLength(12);
   });
   test('una plaza ocupada no se puede confirmar y permite seleccionar otra', () => {
     let state = parkingReducer(initialState, { type: 'select', id: 'gran-via-32' });
@@ -36,7 +36,25 @@ describe('recorridos del catálogo de demostración', () => {
     state = parkingReducer(state, { type: 'occupy', id: 'gran-via-32' });
     state = parkingReducer(state, { type: 'reset' });
     expect(state.favorites).toEqual([]);
-    expect(getResults(state)).toHaveLength(3);
+    expect(getResults(state)).toHaveLength(12);
     expect(initialState.spaces.find(p => p.id === 'gran-via-32')?.availability).toBe('available');
+  });
+  test('combina accesibilidad, distancia y precio sin cambiar el catálogo', () => {
+    const state = parkingReducer(initialState, { type: 'filters', filters: { kind: 'all', availableOnly: true, maxMinutes: 5, accessibleOnly: true, maxPrice: 2.5 } });
+    expect(getResults(state).map(p => p.id)).toEqual(['parking-callao']);
+    expect(getResults(parkingReducer(state, { type: 'filters', filters: { ...state.filters, maxPrice: 2 } }))).toEqual([]);
+    expect(getResults(initialState)).toHaveLength(12);
+  });
+  test('ordena por precio o proximidad y conserva la ruta elegida al confirmar', () => {
+    const cheap = getResults(parkingReducer(initialState, { type: 'filters', filters: { kind: 'parking', availableOnly: true, preference: 'cheap' } }));
+    expect(cheap.map(p => p.id)).toEqual(['parking-callao', 'parking-luna', 'parking-carmen', 'parking-tudescos']);
+    let state = parkingReducer(initialState, { type: 'select', id: 'gran-via-32' });
+    state = parkingReducer(state, { type: 'route-option', alternative: true });
+    state = parkingReducer(state, { type: 'confirm', id: 'gran-via-32' });
+    expect(state.routeAlternative).toBe(true);
+    expect(parkingReducer(state, { type: 'select', id: 'parking-callao' }).routeAlternative).toBe(false);
+    const near = getResults(parkingReducer(initialState, { type: 'filters', filters: { kind: 'all', availableOnly: true, preference: 'near' } }));
+    expect(near[0].id).toBe('gran-via-32');
+    expect(near.at(-1)?.id).toBe('parking-tudescos');
   });
 });

@@ -6,12 +6,25 @@
     "scheme": "apparcar",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
-    "ios": { "supportsTablet": false },
+    "ios": {
+      "supportsTablet": false
+    },
     "android": {},
-    "web": { "bundler": "metro", "output": "single" },
+    "web": {
+      "bundler": "metro",
+      "output": "single"
+    },
     "plugins": [
       "expo-router",
-      ["expo-location", { "locationWhenInUsePermission": "App Arcar usa tu ubicación para situarte cerca de las plazas del catálogo de demostración.", "isIosBackgroundLocationEnabled": false, "isAndroidBackgroundLocationEnabled": false }]
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "App Arcar usa tu ubicación para situarte cerca de las plazas del catálogo de demostración.",
+          "isIosBackgroundLocationEnabled": false,
+          "isAndroidBackgroundLocationEnabled": false
+        }
+      ],
+      "expo-asset"
     ]
   }
 }

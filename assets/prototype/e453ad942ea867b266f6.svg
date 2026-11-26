@@ -1,0 +1,23 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="marker: plaza libre" filter="url(#filter0_d_0_342)">
+<circle id="plaza libre" cx="21" cy="19" r="13.5" fill="#34C759" stroke-width="3" stroke="white"/>
+<g id="car">
+<path id="Vector" d="M17.6667 13.6667H24.3333C24.8667 13.6667 25.2667 14 25.4667 14.4667L26.6 17.6667H15.4L16.5333 14.4667C16.7333 14 17.1333 13.6667 17.6667 13.6667Z" fill="white"/>
+<path id="Vector_2" d="M15 17.6667H27C27.4 17.6667 27.6667 17.9333 27.6667 18.3333V22.3333C27.6667 22.7333 27.4 23 27 23H15C14.6 23 14.3333 22.7333 14.3333 22.3333V18.3333C14.3333 17.9333 14.6 17.6667 15 17.6667Z" fill="white"/>
+<path id="Vector_3" d="M15.6667 23H18V24.6667C18 24.8667 17.8667 25 17.6667 25H16C15.8 25 15.6667 24.8667 15.6667 24.6667V23ZM24 23H26.3333V24.6667C26.3333 24.8667 26.2 25 26 25H24.3333C24.1333 25 24 24.8667 24 24.6667V23Z" fill="white"/>
+<path id="Vector_4" d="M17.9333 14.7333H24.0667L24.9333 17H17.0667L17.9333 14.7333Z" fill="white"/>
+<path id="Vector_5" d="M16.3333 19.8H18.3333V20.8667H16.3333V19.8ZM23.6667 19.8H25.6667V20.8667H23.6667V19.8Z" fill="white"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_d_0_342" x="0" y="0" width="42" height="42" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="2"/>
+<feGaussianBlur stdDeviation="3"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_342"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_342" result="shape"/>
+</filter>
+</defs>
+</svg>

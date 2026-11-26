@@ -53,14 +53,14 @@ Solo se persisten favoritos en esta fase. La selección, ocupación y progreso d
 
 - Instalación limpia con `npm ci` en otra carpeta, sin reutilizar node_modules.
 - TypeScript estricto y ESLint.
-- Diez pruebas automáticas: filtros, búsqueda y recuperación, disponibilidad, selección, confirmación, restablecimiento y formato de favoritos.
+- Doce pruebas automáticas: filtros combinados, ordenación, búsqueda y recuperación, disponibilidad, selección, confirmación, ruta alternativa, restablecimiento y formato de favoritos.
 - Exportación web y paquete Android generados con Metro.
 - Expo Doctor: 21 de 21 comprobaciones de configuración y dependencias superadas.
 - Servidor Expo web arrancado y paquete servido; el registro confirma la inicialización de la aplicación.
 
-La revisión interactiva en Chrome quedó interrumpida porque el control del navegador no pudo verificar la URL local. Por tanto, no se acredita aquí una revisión visual completa, un recorrido manual completo, pruebas externas ni ejecución en un teléfono.
+El 26 de noviembre se comprobó la versión web en el navegador integrado: búsqueda, filtros de parking, mapa/lista, ficha, selección de ruta alternativa, confirmación, aparcamiento en calle, plaza ocupada y recuperación, error de búsqueda, favoritos y persistencia tras recargar. Se verificó también el encaje del teléfono en ventanas de 1280 × 1000 y 393 × 852. El detalle de la adaptación figura en [prototipo-web.md](prototipo-web.md). Las comprobaciones externas y en teléfonos físicos siguen pendientes.
 
-## Comprobación manual pendiente
+## Guion para repetir la comprobación manual
 
 1. Abrir Inicio, buscar Gran Vía y alternar mapa y lista.
 2. Aplicar el filtro Parking; comprobar que ficha y resultados coinciden.
@@ -73,6 +73,6 @@ La revisión interactiva en Chrome quedó interrumpida porque el control del nav
 
 ## Límites del incremento
 
-Es una base navegable para desarrollar y contrastar los flujos en Sprint 3. No incluye disponibilidad real, reserva, pago, cuentas de usuario ni navegación GPS paso a paso. La vista web es esquemática. Los cuatro miembros del equipo deben revisar el reparto, la interfaz y las pruebas pendientes antes de considerar cerrada la validación del esqueleto.
+Es una base navegable para desarrollar y contrastar los flujos en Sprint 3. No incluye disponibilidad real, reserva, pago, cuentas de usuario ni navegación GPS paso a paso. La web utiliza cartografía fija de Figma dentro de un marco de iPhone; las pantallas nativas conservan la base de React Native y requieren su propia adaptación visual. Los cuatro miembros del equipo deben revisar el reparto, la interfaz y las pruebas pendientes antes de considerar cerrada la validación del esqueleto.
 
 `npm audit` detectó seis avisos en la cadena de dependencias de SDK 57 (tres moderados y tres altos, relacionados con minimatch y decode-uri-component). Se conserva la pila acordada; no se ha forzado una actualización mayor incompatible. Revisar las actualizaciones compatibles antes de distribuir un binario fuera del entorno académico de prueba.
