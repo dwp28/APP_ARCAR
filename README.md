@@ -8,9 +8,9 @@ App Arcar permite consultar plazas de aparcamiento cerca de un destino, comparar
 
 El prototipo y el sistema visual están disponibles en Figma. La tecnología de desarrollo quedó definida el 13 de noviembre de 2026 en E3MA-84.
 
-El esqueleto de E3MA-70 incorpora Expo SDK 57, TypeScript y Expo Router, con pantallas conectadas para consultar plazas, seleccionar una, seguir un recorrido simulado y confirmar el aparcamiento. Incluye filtros, favoritos locales y estados de recuperación. La interfaz es una base de trabajo para Sprint 3; la revisión visual completa y la comprobación en teléfonos físicos siguen pendientes.
+El esqueleto de E3MA-70 incorpora Expo SDK 57, TypeScript y Expo Router, con pantallas conectadas para consultar plazas, seleccionar una, seguir un recorrido simulado y confirmar el aparcamiento. Incluye filtros, favoritos locales y estados de recuperación. La versión web reproduce las pantallas de Figma dentro de un iPhone de 393 × 852 px, con marco, Dynamic Island y barra inferior; el teléfono completo se adapta al tamaño de la ventana.
 
-El catálogo, los precios, la disponibilidad y las indicaciones son simulados. El mapa nativo usa react-native-maps; la vista web usa un esquema interactivo, sin cartografía real.
+El catálogo, los precios, la disponibilidad y las indicaciones son simulados. El mapa nativo usa react-native-maps; la web utiliza los mapas vectoriales originales del prototipo con marcadores interactivos y recursos locales. La cartografía web es fija y no ofrece navegación GPS. La adaptación visual nativa y las pruebas en teléfonos físicos siguen pendientes.
 
 ## Tecnología
 
@@ -46,6 +46,7 @@ La búsqueda incluirá los estados sin resultados y error, con acciones para con
 - [Decisión técnica y criterios de aceptación](docs/decision-tecnica.md).
 - [Guion de pruebas de usabilidad](docs/guion-pruebas-usabilidad.md).
 - [Arranque, pantallas y comprobaciones del esqueleto](docs/esqueleto-app.md).
+- [Adaptación del prototipo y revisión del iPhone en web](docs/prototipo-web.md).
 
 ## Diseño y seguimiento
 
@@ -72,6 +73,17 @@ npm start
 ```
 
 Para abrir la versión web: `npm run web`. Para un móvil compatible, ejecutar `npm start` y escanear el QR en Expo Go desde la misma red. No hace falta ninguna clave para el catálogo simulado. La carga de cartografía nativa depende del proveedor y de la conexión; su funcionamiento en el teléfono y el permiso de ubicación deben comprobarse en el dispositivo.
+
+Si ya tienes la rama del esqueleto clonada, detén Expo con Ctrl+C y actualiza desde PowerShell:
+
+```powershell
+git switch feat/E3MA-70-esqueleto-app
+git pull --ff-only
+npm.cmd ci
+npm.cmd run web
+```
+
+Ejecuta cada comando por separado. La web muestra el iPhone directamente; no hace falta activar la emulación del navegador.
 
 Comprobaciones del proyecto:
 
