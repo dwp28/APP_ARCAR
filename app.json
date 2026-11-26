@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "name": "App Arcar",
+    "slug": "app-arcar",
+    "version": "0.1.0",
+    "scheme": "apparcar",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "ios": { "supportsTablet": false },
+    "android": {},
+    "web": { "bundler": "metro", "output": "single" },
+    "plugins": [
+      "expo-router",
+      ["expo-location", { "locationWhenInUsePermission": "App Arcar usa tu ubicación para situarte cerca de las plazas del catálogo de demostración.", "isIosBackgroundLocationEnabled": false, "isAndroidBackgroundLocationEnabled": false }]
+    ]
+  }
+}

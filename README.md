@@ -8,7 +8,9 @@ App Arcar permite consultar plazas de aparcamiento cerca de un destino, comparar
 
 El prototipo y el sistema visual están disponibles en Figma. La tecnología de desarrollo quedó definida el 13 de noviembre de 2026 en E3MA-84.
 
-La preparación del repositorio comprende este README, el acuerdo técnico, el guion de pruebas y la configuración de archivos excluidos de Git. El siguiente hito es montar el esqueleto de la aplicación en E3MA-70. Las instrucciones de arranque se comprobarán al incorporar ese código.
+El esqueleto de E3MA-70 incorpora Expo SDK 57, TypeScript y Expo Router, con pantallas conectadas para consultar plazas, seleccionar una, seguir un recorrido simulado y confirmar el aparcamiento. Incluye filtros, favoritos locales y estados de recuperación. La interfaz es una base de trabajo para Sprint 3; la revisión visual completa y la comprobación en teléfonos físicos siguen pendientes.
+
+El catálogo, los precios, la disponibilidad y las indicaciones son simulados. El mapa nativo usa react-native-maps; la vista web usa un esquema interactivo, sin cartografía real.
 
 ## Tecnología
 
@@ -43,6 +45,7 @@ La búsqueda incluirá los estados sin resultados y error, con acciones para con
 
 - [Decisión técnica y criterios de aceptación](docs/decision-tecnica.md).
 - [Guion de pruebas de usabilidad](docs/guion-pruebas-usabilidad.md).
+- [Arranque, pantallas y comprobaciones del esqueleto](docs/esqueleto-app.md).
 
 ## Diseño y seguimiento
 
@@ -61,14 +64,27 @@ La búsqueda incluirá los estados sin resultados y error, con acciones para con
 
 El desarrollo se realizará con Node.js 24 LTS, npm y un cliente Expo Go compatible con SDK 57. En Windows se podrá utilizar Android Studio para el emulador de Android. La comprobación en iPhone se realizará en un teléfono físico.
 
-Una vez añadido el esqueleto, estos serán los comandos previstos para arrancar desde una copia del repositorio.
+Desde la carpeta del repositorio que contiene package.json:
 
 ```bash
 npm ci
-npx expo start
+npm start
 ```
 
-El esqueleto incorporará package.json y package-lock.json. En ese hito se comprobarán el arranque, el mapa y la ubicación en los dispositivos de prueba y se completarán estas instrucciones con los resultados.
+Para abrir la versión web: `npm run web`. Para un móvil compatible, ejecutar `npm start` y escanear el QR en Expo Go desde la misma red. No hace falta ninguna clave para el catálogo simulado. La carga de cartografía nativa depende del proveedor y de la conexión; su funcionamiento en el teléfono y el permiso de ubicación deben comprobarse en el dispositivo.
+
+Comprobaciones del proyecto:
+
+```bash
+npm run typecheck
+npm run lint
+npm test
+npm run export:web
+npx expo export --platform android --output-dir dist-android
+npx expo-doctor
+```
+
+Las exportaciones generan los paquetes JavaScript y recursos; no son un APK ni sustituyen una prueba en el teléfono.
 
 Los módulos nativos se instalarán mediante `npx expo install` para mantener la compatibilidad con SDK 57. Las versiones exactas quedarán registradas en el lockfile.
 
@@ -82,5 +98,5 @@ Las pruebas de usabilidad del Sprint 2 se registrarán con sus participantes, ta
 
 ## Equipo
 
-Daniel Relloso · Daniel Willson · Javier Jiménez · Pablo Monserrat · Jaime Pavón
+Daniel Relloso · Daniel Willson · Javier Jiménez · Pablo Monserrat
 
